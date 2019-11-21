@@ -1,5 +1,6 @@
 package GUI;
 
+import util.ImageLoader;
 import util.Player;
 import util.State;
 

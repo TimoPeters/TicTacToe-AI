@@ -1,4 +1,4 @@
-package GUI;
+package util;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
