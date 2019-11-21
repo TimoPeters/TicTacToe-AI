@@ -1,5 +1,6 @@
 #IntelliJ .idea directory
 .idea
+*.iml
 
 # Compiled class file
 *.class
