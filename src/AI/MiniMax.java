@@ -24,8 +24,9 @@ public class MiniMax {
      * @param player: an human or a computer
      * @return a list with [the best row, best col, best score]
      */
-    public int[] minmax(Board state, int depth, Player player) {
+    public int[] minimax(Board state, int depth, Player player) {
         int[] best = new int[3];
+        int score[] = new int[3];
 
         if (player == Player.X) {
             best[0] = -1;
@@ -37,21 +38,56 @@ public class MiniMax {
             best[2] = Integer.MAX_VALUE;
         }
 
+        if (depth == 0 || state.getWinner() == null) {
+            best[0] = -1;
+            best[1] = -1;
+            best[2] = evaluate(state);
+            return best;
+        }
+
+        for (int[] cell : emptyCellsIndices(state)) {
+            score = minimax(state, depth -1, state.getCurrentPlayer());
+        }
+
         //ToDo
 
         return best;
     }
 
-    private List<int[]> emptyCellsIndices(Board board) {
+    /**
+     * Each empty cell will be added into cells' list
+     *
+     * @param state: the state of the current board
+     * @return: a list of empty cells
+     */
+    private List<int[]> emptyCellsIndices(Board state) {
         List<int[]> emptyCells = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (board.getStates()[i][j] == State.EMPTY) {
+                if (state.getStates()[i][j] == State.EMPTY) {
                     int[] emptyCell = {i, j};
                     emptyCells.add(emptyCell);
                 }
             }
         }
         return emptyCells;
+    }
+
+    /**
+     * Function to heuristic evaluation of state.
+     *
+     * @param state: the state of the current board
+     * @return: +1 if the computer wins; -1 if the human wins; 0 draw
+     */
+    private int evaluate(Board state) {
+        int score;
+        if (state.getWinner() == Player.X) {
+            score = 1;
+        } else if (state.getWinner() == Player.O) {
+            score = -1;
+        } else {
+            score = 0;
+        }
+        return score;
     }
 }
