@@ -97,6 +97,7 @@ public class Board {
                 states[i][j] = State.EMPTY;
             }
         }
+        System.out.println("Reset");
     }
 
     private void createButtons() {
@@ -110,6 +111,7 @@ public class Board {
                 buttons[i][j].setBorder(null);
                 jFrame.add(buttons[i][j]);
                 buttons[i][j] = buttons[i][j];
+                System.out.println("Created new JButton at: [" + i + "][" + j + "]");
             }
         }
     }
@@ -158,6 +160,7 @@ public class Board {
 
     public void setWinner(Player player) {
         this.winner = player;
+        System.out.println("Winner: " + player);
     }
 
     public State[][] getStates() {

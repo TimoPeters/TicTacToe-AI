@@ -32,11 +32,11 @@ public class ActionHandler implements ActionListener {
                 if (states[0][0] == State.EMPTY && board.getCurrentPlayer() == Player.X) {
                     states[0][0] = State.X;
                     board.setCurrentPlayer(Player.O);
-                    System.out.println(states[0][0]);
+                    System.out.println(states[0][0] + " placed at [0][0]");
                 } else if (states[0][0] == State.EMPTY && board.getCurrentPlayer() == Player.O) {
                     states[0][0] = State.O;
                     board.setCurrentPlayer(Player.X);
-                    System.out.println(states[0][0]);
+                    System.out.println(states[0][0] + " placed at [0][0]");
                 }
             }
 
@@ -44,11 +44,11 @@ public class ActionHandler implements ActionListener {
                 if (states[0][1] == State.EMPTY && board.getCurrentPlayer() == Player.X) {
                     states[0][1] = State.X;
                     board.setCurrentPlayer(Player.O);
-                    System.out.println(states[0][1]);
+                    System.out.println(states[0][1] + " placed at [0][1]");
                 } else if (states[0][1] == State.EMPTY && board.getCurrentPlayer() == Player.O) {
                     states[0][1] = State.O;
                     board.setCurrentPlayer(Player.X);
-                    System.out.println(states[0][1]);
+                    System.out.println(states[0][1] + " placed at [0][1]");
                 }
             }
 
@@ -56,11 +56,11 @@ public class ActionHandler implements ActionListener {
                 if (states[0][2] == State.EMPTY && board.getCurrentPlayer() == Player.X) {
                     states[0][2] = State.X;
                     board.setCurrentPlayer(Player.O);
-                    System.out.println(states[0][2]);
+                    System.out.println(states[0][2] + " placed at [0][2]");
                 } else if (states[0][2] == State.EMPTY && board.getCurrentPlayer() == Player.O) {
                     states[0][2] = State.O;
                     board.setCurrentPlayer(Player.X);
-                    System.out.println(states[0][2]);
+                    System.out.println(states[0][2] + " placed at [0][2]");
                 }
             }
             // Row 2
@@ -68,33 +68,33 @@ public class ActionHandler implements ActionListener {
                 if (states[1][0] == State.EMPTY && board.getCurrentPlayer() == Player.X) {
                     states[1][0] = State.X;
                     board.setCurrentPlayer(Player.O);
-                    System.out.println(states[1][0]);
+                    System.out.println(states[1][0] + " placed at [1][0]");
                 } else if (states[1][0] == State.EMPTY && board.getCurrentPlayer() == Player.O) {
                     states[1][0] = State.O;
                     board.setCurrentPlayer(Player.X);
-                    System.out.println(states[1][0]);
+                    System.out.println(states[1][0] + " placed at [1][0]");
                 }
             }
             if (e.getSource() == buttons[1][1]) {
                 if (states[1][1] == State.EMPTY && board.getCurrentPlayer() == Player.X) {
                     states[1][1] = State.X;
                     board.setCurrentPlayer(Player.O);
-                    System.out.println(states[1][1]);
+                    System.out.println(states[1][1] + " placed at [1][1]");
                 } else if (states[1][1] == State.EMPTY && board.getCurrentPlayer() == Player.O) {
                     states[1][1] = State.O;
                     board.setCurrentPlayer(Player.X);
-                    System.out.println(states[1][1]);
+                    System.out.println(states[1][1] + " placed at [1][1]");
                 }
             }
             if (e.getSource() == buttons[1][2]) {
                 if (states[1][2] == State.EMPTY && board.getCurrentPlayer() == Player.X) {
                     states[1][2] = State.X;
                     board.setCurrentPlayer(Player.O);
-                    System.out.println(states[1][2]);
+                    System.out.println(states[1][2] + " placed at [1][2]");
                 } else if (states[1][2] == State.EMPTY && board.getCurrentPlayer() == Player.O) {
                     states[1][2] = State.O;
                     board.setCurrentPlayer(Player.X);
-                    System.out.println(states[1][2]);
+                    System.out.println(states[1][2] + " placed at [1][2]");
                 }
             }
             //Row 3
@@ -102,33 +102,33 @@ public class ActionHandler implements ActionListener {
                 if (states[2][0] == State.EMPTY && board.getCurrentPlayer() == Player.X) {
                     states[2][0] = State.X;
                     board.setCurrentPlayer(Player.O);
-                    System.out.println(states[2][0]);
+                    System.out.println(states[2][0] + " placed at [2][0]");
                 } else if (states[2][0] == State.EMPTY && board.getCurrentPlayer() == Player.O) {
                     states[2][0] = State.O;
                     board.setCurrentPlayer(Player.X);
-                    System.out.println(states[2][0]);
+                    System.out.println(states[2][0] + " placed at [2][0]");
                 }
             }
             if (e.getSource() == buttons[2][1]) {
                 if (states[2][1] == State.EMPTY && board.getCurrentPlayer() == Player.X) {
                     states[2][1] = State.X;
                     board.setCurrentPlayer(Player.O);
-                    System.out.println(states[2][1]);
+                    System.out.println(states[2][1] + " placed at [2][1]");
                 } else if (states[2][1] == State.EMPTY && board.getCurrentPlayer() == Player.O) {
                     states[2][1] = State.O;
                     board.setCurrentPlayer(Player.X);
-                    System.out.println(states[2][1]);
+                    System.out.println(states[2][1] + " placed at [2][1]");
                 }
             }
             if (e.getSource() == buttons[2][2]) {
                 if (states[2][2] == State.EMPTY && board.getCurrentPlayer() == Player.X) {
                     states[2][2] = State.X;
                     board.setCurrentPlayer(Player.O);
-                    System.out.println(states[2][2]);
+                    System.out.println(states[2][2] + " placed at [2][2]");
                 } else if (states[2][2] == State.EMPTY && board.getCurrentPlayer() == Player.O) {
                     states[2][2] = State.O;
                     board.setCurrentPlayer(Player.X);
-                    System.out.println(states[2][2]);
+                    System.out.println(states[2][2] + " placed at [2][2]");
                 }
             }
         }
