@@ -1,6 +1,7 @@
 package GUI;
 
 import javafx.scene.control.ComboBox;
+import util.Mode;
 import util.Player;
 import util.State;
 
@@ -22,6 +23,7 @@ public class Board {
     private JComboBox<String> mode;
 
     public static final Player DEFAULT_STARTING_PLAYER = Player.X;
+    private Mode currentMode = Mode.PVP;
     private Player currentPlayer = DEFAULT_STARTING_PLAYER;
     private Player winner = null;
     private State[][] states = new State[3][3];
@@ -63,6 +65,19 @@ public class Board {
         mode.setSelectedIndex(0);
         mode.setVisible(true);
         mode.setBounds(25, 575, 100, 20);
+        mode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (mode.getSelectedIndex() == 0) {
+                    currentMode = Mode.PVP;
+                    System.out.println(0 + ": " + modes[mode.getSelectedIndex()] + "\nmode: " + currentMode);
+                } else if (mode.getSelectedIndex() == 1) {
+                    currentMode = Mode.PVB;
+                    System.out.println(1 + ": " + modes[mode.getSelectedIndex()] + "\nmode: " + currentMode);
+
+                }
+            }
+        });
         jFrame.add(mode);
 
         draw = new Draw(this);
