@@ -1,5 +1,6 @@
 package GUI;
 
+import javafx.scene.control.ComboBox;
 import util.Player;
 import util.State;
 
@@ -17,6 +18,8 @@ public class Board {
     private Draw draw;
     private JButton[][] buttons = new JButton[3][3];
     private JButton reset;
+    private Checkbox aiStarts;
+    private JComboBox<String> mode;
 
     public static final Player DEFAULT_STARTING_PLAYER = Player.X;
     private Player currentPlayer = DEFAULT_STARTING_PLAYER;
@@ -48,6 +51,19 @@ public class Board {
             }
         });
         jFrame.add(reset);
+
+        aiStarts = new Checkbox("AI Starts");
+        aiStarts.setVisible(true);
+        aiStarts.setBounds(25, 600, 100, 40);
+        aiStarts.setState(true);
+        jFrame.add(aiStarts);
+
+        String[] modes = {"2 Players", "AI"};
+        mode = new JComboBox<String>(modes);
+        mode.setSelectedIndex(0);
+        mode.setVisible(true);
+        mode.setBounds(25, 575, 100, 20);
+        jFrame.add(mode);
 
         draw = new Draw(this);
         draw.setBounds(0, 0, 800, 600);
