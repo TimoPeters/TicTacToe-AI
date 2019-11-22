@@ -1,5 +1,6 @@
 package GUI;
 
+import Game.GameLogic;
 import util.Player;
 import util.State;
 
@@ -79,7 +80,7 @@ public class ActionHandler implements ActionListener {
                     states[1][1] = State.X;
                     board.setCurrentPlayer(Player.O);
                     System.out.println(states[1][1]);
-                } else if (states[1][0] == State.EMPTY && board.getCurrentPlayer() == Player.O) {
+                } else if (states[1][1] == State.EMPTY && board.getCurrentPlayer() == Player.O) {
                     states[1][1] = State.O;
                     board.setCurrentPlayer(Player.X);
                     System.out.println(states[1][1]);
@@ -131,5 +132,7 @@ public class ActionHandler implements ActionListener {
                 }
             }
         }
+
+        GameLogic.checkWinner(board);
     }
 }

@@ -125,6 +125,10 @@ public class Board {
         return winner;
     }
 
+    public void setWinner(Player player) {
+        this.winner = player;
+    }
+
     public State[][] getStates() {
         return states;
     }
