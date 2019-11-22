@@ -1,2 +1,2 @@
 # TicTacToe-AI
-TicTacToe AI that uses MinMax algorithm
+TicTacToe AI that uses MiniMax algorithm
