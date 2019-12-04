@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Timo Peters on 21.11.2019.
@@ -17,16 +19,16 @@ public class Board {
 
     private JFrame jFrame;
     private Draw draw;
-    private JButton[][] buttons = new JButton[3][3];
+    public static JButton[][] buttons = new JButton[3][3];
     private JButton reset;
     private Checkbox aiStarts;
-    private JComboBox<String> mode;
+    private JComboBox<String> modeBox;
 
     public static final Player DEFAULT_STARTING_PLAYER = Player.X;
-    private Mode currentMode = Mode.PVP;
-    private Player currentPlayer = DEFAULT_STARTING_PLAYER;
-    private Player winner = null;
-    private State[][] states = new State[3][3];
+    public static Mode currentMode = Mode.PVP;
+    public static Player currentPlayer = DEFAULT_STARTING_PLAYER;
+    public static Player winner = null;
+    public static State[][] states = new State[3][3];
 
     public Board() {
         jFrame = new JFrame();
@@ -61,24 +63,27 @@ public class Board {
         jFrame.add(aiStarts);
 
         String[] modes = {"2 Players", "AI"};
-        mode = new JComboBox<String>(modes);
-        mode.setSelectedIndex(0);
-        mode.setVisible(true);
-        mode.setBounds(25, 575, 100, 20);
-        mode.addActionListener(new ActionListener() {
+        modeBox = new JComboBox<String>(modes);
+        modeBox.setSelectedIndex(0);
+        modeBox.setVisible(true);
+        modeBox.setBounds(25, 575, 100, 20);
+        modeBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (mode.getSelectedIndex() == 0) {
-                    currentMode = Mode.PVP;
-                    System.out.println(0 + ": " + modes[mode.getSelectedIndex()] + "\nmode: " + currentMode);
-                } else if (mode.getSelectedIndex() == 1) {
-                    currentMode = Mode.PVB;
-                    System.out.println(1 + ": " + modes[mode.getSelectedIndex()] + "\nmode: " + currentMode);
-
+                if (modeBox.getSelectedIndex() == 0) {
+                    if (isEmpty()) {
+                        currentMode = Mode.PVP;
+                        System.out.println(0 + ": " + modes[modeBox.getSelectedIndex()] + "\nmode: " + currentMode);
+                    }
+                } else if (modeBox.getSelectedIndex() == 1) {
+                    if (isEmpty()) {
+                        currentMode = Mode.PVB;
+                        System.out.println(1 + ": " + modes[modeBox.getSelectedIndex()] + "\nmode: " + currentMode);
+                    }
                 }
             }
         });
-        jFrame.add(mode);
+        jFrame.add(modeBox);
 
         draw = new Draw(this);
         draw.setBounds(0, 0, 800, 600);
@@ -88,6 +93,20 @@ public class Board {
         jFrame.setVisible(true);
     }
 
+    public static List<int[]> getEmptySpots() {
+        List<int[]> returnList = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (states[i][j] == State.EMPTY) {
+                    returnList.add(new int[]{i, j});
+                }
+            }
+        }
+
+        return returnList;
+    }
+
     public void reset() {
         currentPlayer = DEFAULT_STARTING_PLAYER;
         winner = null;
@@ -95,6 +114,16 @@ public class Board {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 states[i][j] = State.EMPTY;
+            }
+        }
+
+        if (modeBox.getSelectedIndex() == 0) {
+            if (isEmpty()) {
+                currentMode = Mode.PVP;
+            }
+        } else if (modeBox.getSelectedIndex() == 1) {
+            if (isEmpty()) {
+                currentMode = Mode.PVB;
             }
         }
         System.out.println("Reset");
@@ -142,6 +171,17 @@ public class Board {
         }
     }
 
+    private boolean isEmpty() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (states[i][j] == State.O || states[i][j] == State.X) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public JButton[][] getButtons() {
         return buttons;
     }
@@ -160,7 +200,11 @@ public class Board {
 
     public void setWinner(Player player) {
         this.winner = player;
-        System.out.println("Winner: " + player);
+        if (player != Player.DRAW) {
+            System.out.println("Winner: " + player);
+        } else {
+            System.out.println("Draw");
+        }
     }
 
     public State[][] getStates() {

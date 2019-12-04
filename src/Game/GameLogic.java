@@ -73,5 +73,10 @@ public class GameLogic {
                 board.setWinner(Player.O);
             }
         }
+
+        // Draw
+        if (Board.winner == null && Board.getEmptySpots().size() == 0) {
+            board.setWinner(Player.DRAW);
+        }
     }
 }

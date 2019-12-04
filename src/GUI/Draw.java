@@ -50,6 +50,8 @@ public class Draw extends JLabel {
             graphics.drawString("Winner: X", 25, 100);
         } else if (board.getWinner() == Player.O) {
             graphics.drawString("Winner: O", 25, 100);
+        } else if (board.getWinner() == Player.DRAW) {
+            graphics.drawString("Draw", 25, 100);
         }
 
         //Row 1
